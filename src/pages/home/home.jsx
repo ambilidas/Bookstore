@@ -48,6 +48,14 @@ function Home() {
                 </div>
             </div>
         </div>
+        <div className='books-div'>
+            <h3>Books</h3>
+            <select>
+                <option>Sort by relevence</option>
+                <option>price:high to low</option>
+            </select>
+        </div>
+        
         <div className='middle-container'>{mapBooks}</div>
         <div className='footer-home'>
             <p className='text-footer'>Copyright © 2020, Bookstore Private Limited. All Rights Reserved</p>
