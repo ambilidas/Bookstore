@@ -9,14 +9,17 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import {getBooks} from '../../services/dataservice'
 import Book from '../../components/books/book';
 import Bookdetail from '../../components/bookdetails/bookdetail';
+import Cartpage from '../../components/mycart/cartpage';
+import Footer from '../../components/footer/footer';
 
 function Home() {
     const [booksArray,setBooksArray] = useState([]);
     const [booklist,setBooklist] = React.useState("");
     const [switchBookDetails,setSwitchBookDetails] = useState(false);
+    
 
     const GetBooks = () => {
-        getBooks().then((response) =>{
+        getBooks().then((response) => {
             console.log(response)
            setBooksArray(response.data.result);
    
@@ -26,7 +29,7 @@ function Home() {
        })
     }
     const listenToBookDetails = (data) => {
-        if(data === true)
+        
         setSwitchBookDetails(true)
     }
     const listenToBookList = (data) => {
@@ -58,24 +61,26 @@ function Home() {
                 </div>
             </div>
         </div>
-        <div className='books-div'>
+        {/* <div className='books-div'>
             <h3>Books</h3>
             <select>
                 <option>Sort by relevence</option>
                 <option>price:high to low</option>
                 <option>price:low to high</option>
             </select>
-        </div>
+        </div> */}
         
-        <div className='middle-container'>
+        {/* <div className='middle-container'>
             {
                 switchBookDetails ? <Bookdetail booklist={booklist}/> : booksArray.map((book) => <Book book={book} listenToBookDetails={listenToBookDetails} listenToBookList={listenToBookList}/>)
             }
+            
            
-        </div>
-        <div className='footer-home'>
-            <p className='text-footer'>Copyright © 2020, Bookstore Private Limited. All Rights Reserved</p>
-        </div>
+        </div> */}
+       
+        <Cartpage />
+
+        <Footer />
     </div>
   )
 }
