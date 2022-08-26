@@ -3,9 +3,72 @@ import './bookdetail.css'
 import bookimage from '../books/bookimg.png'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
-
+import {getCartItems} from '../../services/dataservice';
+import { addCartItems } from '../../services/dataservice';
+import { putCartItem } from '../../services/dataservice';
+import { useState } from 'react';
 function Bookdetail(props) {
-  console.log(props.booklist);
+  console.log(props)
+  const [gettingCartelement,setGettingCartelement] = useState([]);
+  const [getCartitem,setGetCartitem] = useState([]);
+  const [quantity,setQuantity] = useState()
+
+ const GetCartItems = () => {
+      getCartItems().then((response) => {
+        console.log(response);
+        let filterArray = response.data.result.filter((cart) => {
+          if(cart.product_id !== null){
+            
+            if(props.booklist._id === cart.product_id._id) {
+              console.log(cart._id)
+
+              setGettingCartelement(cart._id);
+              setQuantity(cart.quantityToBuy)
+            }
+            return cart
+          }
+          
+        })
+        setGetCartitem(filterArray);
+        
+
+      }).catch((error) => {
+        console.log(error)
+      })
+      
+ } 
+ const addToCart = () => {
+    addCartItems(props.booklist._id).then((response) => {
+      console.log(response)
+      GetCartItems()
+    }).catch((error) => {
+      console.log(error)
+    })
+ }
+ const decrementQuantity = () => {
+  let cartObj = {
+    quantityToBuy : quantity - 1
+  }
+    putCartItem(cartObj,gettingCartelement).then((response) => {
+      console.log(response)
+      GetCartItems()
+    }).catch((error) => {
+      console.log(error)
+    })
+ }
+ const incrementQuantity = () => {
+    let cartObj = {
+      quantityToBuy : quantity + 1
+    }
+    putCartItem(cartObj,gettingCartelement).then((response) => {
+      console.log(response)
+      GetCartItems()
+    }).catch((error) => {
+      console.log(error)
+    })
+}
+
+ React.useEffect(() => {GetCartItems()},[]);
   return (
     <div className='main-block-details'>
       <div className='sub-block1-details'>
@@ -13,7 +76,17 @@ function Bookdetail(props) {
             <img className='bookimage-details' src={bookimage}/>
          </div>  
           <div className='button-cart-wishlist'>
-              <button className='btn-addtobag'><span className='addtobag'>ADD TO BAG</span></button>
+            {
+              (gettingCartelement.length !== 0) ? (
+                <div className='btn-add-quantity'>
+                  <div className='minus-btn' onClick={decrementQuantity}><b>-</b></div>
+                  <div className='show-quantity'><b>{quantity}</b></div>
+                  <div className='plus-btn' onClick={incrementQuantity}><b>+</b></div>
+                </div>  
+              )  : 
+              <button className='btn-addtobag' onClick={addToCart}><span className='addtobag'>ADD TO BAG</span></button>
+            }
+              
               <button className='btn-wishlist'><FavoriteBorderIcon className='fav-icon'/><span className='wishlist'>WISHLIST</span></button>
           </div>
       </div>

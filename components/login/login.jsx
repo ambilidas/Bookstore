@@ -58,7 +58,7 @@ function Login() {
 
     if (emailTest===true && passwordTest === true) {
       LogIn(loginObj)
-          .then((resp) => { console.log(resp); localStorage.setItem('token', resp.data.id) })
+          .then((resp) => { console.log(resp); localStorage.setItem('token', resp.data.result.accessToken) })
           .catch((error) => { console.log(error) })
   }
 
