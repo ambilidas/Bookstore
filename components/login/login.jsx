@@ -2,13 +2,15 @@ import React from 'react'
 import './login.css'
 import TextField from '@mui/material/TextField';
 import { LogIn } from '../../services/userservice';
+import {useNavigate} from 'react-router-dom';
 const emailRegex = /^[a-zA-Z]+[a-zA-Z0-9]*[- . + _]?[a-zA-Z0-9]+[@]{1}[a-z0-9]+[.]{1}[a-z]+[.]?[a-z]+$/;
 const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$/;
 
+
 function Login() {
 
-  
-  const [regexObj, setRegexObj] = React.useState({
+  const navigate = useNavigate()
+   const [regexObj, setRegexObj] = React.useState({
     emailBorder: false,
     emailHelper: "",
     passwordBorder: false,
@@ -58,7 +60,7 @@ function Login() {
 
     if (emailTest===true && passwordTest === true) {
       LogIn(loginObj)
-          .then((resp) => { console.log(resp); localStorage.setItem('token', resp.data.result.accessToken) })
+          .then((resp) => { console.log(resp) ; navigate('/Home'); localStorage.setItem('token', resp.data.result.accessToken) })
           .catch((error) => { console.log(error) })
   }
 

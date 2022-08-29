@@ -14,15 +14,17 @@
 .mycart {
     width: 774px;
     min-height: 251px;
-    max-height: 1000px;
-    
+    max-height: 1000px !important; 
+    /* height: 251px; */
+    margin: auto;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #DCDCDC;
+    /* border: 1px solid red; */
     border-radius: 1px;
     display: flex;
     flex-direction: column;
     
-    margin: auto;
+    
 }
 .sub-div1-mycart {
     width: 90%;
@@ -31,6 +33,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin-top: 10px;
+    
 }
 .heading-mycart {
     
@@ -75,8 +78,9 @@
     height: 89px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
     margin-left: 20px;
+    
 }
 
 .btn-placeorder {
@@ -101,6 +105,7 @@
     display: flex;
     align-items: center;
     margin-top: 10px;
+   
    
 }
 .rect-text {

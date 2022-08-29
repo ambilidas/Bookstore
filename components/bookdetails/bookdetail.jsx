@@ -7,6 +7,8 @@ import {getCartItems} from '../../services/dataservice';
 import { addCartItems } from '../../services/dataservice';
 import { putCartItem } from '../../services/dataservice';
 import { useState } from 'react';
+import { addWishlist } from '../../services/dataservice';
+
 function Bookdetail(props) {
   console.log(props)
   const [gettingCartelement,setGettingCartelement] = useState([]);
@@ -68,6 +70,17 @@ function Bookdetail(props) {
     })
 }
 
+const wishList = (data) => {
+  
+  addWishlist(data).then((response) => {
+    console.log(response)
+  }).catch((error) => {
+    console.log(error)
+  })
+  
+}
+
+
  React.useEffect(() => {GetCartItems()},[]);
   return (
     <div className='main-block-details'>
@@ -87,7 +100,7 @@ function Bookdetail(props) {
               <button className='btn-addtobag' onClick={addToCart}><span className='addtobag'>ADD TO BAG</span></button>
             }
               
-              <button className='btn-wishlist'><FavoriteBorderIcon className='fav-icon'/><span className='wishlist'>WISHLIST</span></button>
+              <button className='btn-wishlist'  onClick={() =>wishList(props.booklist._id)}><FavoriteBorderIcon className='fav-icon'/><span className='wishlist'>WISHLIST</span></button>
           </div>
       </div>
        <div className='sub-block2-details'>
