@@ -36,3 +36,18 @@ export const checkoutItem = (data) => {
     let response = axios.post('https://bookstore.incubation.bridgelabz.com/bookstore_user/add/order',data,headerConfig)
     return response;
 }
+
+export const getWishlist = () => {
+    let response = axios.get('https://bookstore.incubation.bridgelabz.com/bookstore_user/get_wishlist_items',headerConfig)
+    return response;
+}
+
+export const addWishlist = (data) => {
+    let response = axios.post('https://bookstore.incubation.bridgelabz.com/bookstore_user/add_wish_list/'+data,data,headerConfig)
+    return response;
+}
+
+export const deleteWishlist = (data) => {
+    let response = axios.delete('https://bookstore.incubation.bridgelabz.com/bookstore_user/remove_wishlist_item/'+data,headerConfig)
+    return response;
+}
