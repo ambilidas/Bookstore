@@ -1,22 +1,21 @@
 import React, { useState } from 'react'
 import './home.css'
 
-import bookimage from './education.png'
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 import {getBooks} from '../../services/dataservice'
 import Book from '../../components/books/book';
 import Bookdetail from '../../components/bookdetails/bookdetail';
 import Cartpage from '../../components/mycart/cartpage';
+import Wishlist from '../../components/wishlist/wishlist';
 import Footer from '../../components/footer/footer';
+import Ordersuccessfull from '../../components/ordersuccess/ordersuccessfull';
+import Header from '../../components/header/header';
 
 function Home() {
     const [booksArray,setBooksArray] = useState([]);
     const [booklist,setBooklist] = React.useState("");
     const [switchBookDetails,setSwitchBookDetails] = useState(false);
-    
+    // const [switchToHome,setSwitchToHome] = useState(false);
 
     const GetBooks = () => {
         getBooks().then((response) => {
@@ -36,49 +35,38 @@ function Home() {
         setBooklist(data)
     }
 
+    // const listenToContinueshopping = () => {
+    //     setSwitchToHome(true)
+    // }
+
     React.useEffect(() => {GetBooks()},[])
 
     
   return (
     <div className='main-container-home'>
-        <div className='header-home'>
-            <div className='sub-box1-home'>
-                <img className='image-book-header' src={bookimage} />
-                <p className='bookstore-text'>Bookstore</p>
-                <div className='white-box'>
-                    <SearchOutlinedIcon className='search-icon' />
-                    <input type='text' className='textbox-search' placeholder='Search...' />
-                </div>
-            </div>
-            <div className='sub-box2-home'>
-                <div className='sub-div3-home'>
-                    <PersonOutlineIcon className='profile-icon'/>
-                    <label className='profile-icon'>Profile</label>
-                </div>
-                <div className='sub-div3-home'>
-                    <ShoppingCartOutlinedIcon className='profile-icon'/>
-                    <label className='cart-icon'>Cart</label>
-                </div>
-            </div>
-        </div>
-        {/* <div className='books-div'>
+        
+       <Header />
+        <div className='books-div'>
             <h3>Books</h3>
             <select>
                 <option>Sort by relevence</option>
                 <option>price:high to low</option>
                 <option>price:low to high</option>
             </select>
-        </div> */}
+        </div> 
         
-        {/* <div className='middle-container'>
+       
+         <div className='middle-container'>
             {
                 switchBookDetails ? <Bookdetail booklist={booklist}/> : booksArray.map((book) => <Book book={book} listenToBookDetails={listenToBookDetails} listenToBookList={listenToBookList}/>)
             }
-            
-           
-        </div> */}
+        </div>
+
+               
+        {/* <Cartpage /> */}
+        {/* <Wishlist /> */}
+
        
-        <Cartpage />
 
         <Footer />
     </div>
