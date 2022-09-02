@@ -10,12 +10,14 @@ import Wishlist from '../../components/wishlist/wishlist';
 import Footer from '../../components/footer/footer';
 import Ordersuccessfull from '../../components/ordersuccess/ordersuccessfull';
 import Header from '../../components/header/header';
+import Pagination from '@mui/material/Pagination';
 
 function Home() {
     const [booksArray,setBooksArray] = useState([]);
     const [booklist,setBooklist] = React.useState("");
     const [switchBookDetails,setSwitchBookDetails] = useState(false);
     // const [switchToHome,setSwitchToHome] = useState(false);
+    const [page,setPage] = useState(1);
 
     const GetBooks = () => {
         getBooks().then((response) => {
@@ -33,6 +35,10 @@ function Home() {
     }
     const listenToBookList = (data) => {
         setBooklist(data)
+    }
+    const listentopage =(e,v) => {
+        
+        setPage(v)
     }
 
     // const listenToContinueshopping = () => {
@@ -65,9 +71,9 @@ function Home() {
                
         {/* <Cartpage /> */}
         {/* <Wishlist /> */}
-
-       
-
+        <div className='pagination'>
+        <Pagination  onChange={listentopage}  count={10} page={page} />
+        </div>
         <Footer />
     </div>
   )
