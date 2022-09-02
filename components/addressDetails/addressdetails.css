@@ -141,3 +141,54 @@
     align-self: flex-end;
     margin-right: 40px;
 }
+@media screen and (min-width: 481px) and (max-width: 860px) {
+    .maindiv-address {
+        width: 70vw;
+        
+    }
+    .fullname-text {
+        width: 230px;
+    }
+    .subdiv1-adr {
+        gap: 5px;
+    }
+    .address-field {
+        width: 465px;
+    }
+    .btn-continue {
+        width: 130px;
+        height: 30px;
+    }
+    
+   
+}
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .maindiv-address {
+        width: 70vw;
+        
+    }
+    .fullname-text {
+        width: 115px;
+    }
+    .subdiv1-adr {
+        margin-left: 40px;
+        gap: 5px;
+    }
+    .address-field {
+        width: 235px;
+       
+    }
+    .inputfield {
+        width: 90px;
+    }
+    .subdiv2-adr {
+        margin-left: 40px;
+    }
+    .radio-div {
+        margin-left: 40px;
+    }
+    .btn-continue {
+        width: 85px;
+        height: 20px;
+    }
+}

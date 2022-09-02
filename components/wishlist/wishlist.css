@@ -92,3 +92,52 @@
     left: 550px;
     
 }
+@media screen and (min-width: 481px) and (max-width: 860px) {
+    .maindiv-wish {
+        width: 70vw;
+    }
+    .head-wish {
+        width: 70vw;
+    }
+    .books-wish {
+        width: 70vw;
+    }
+    .remove-wish {
+        left: 150px;
+    }
+}
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .maindiv-wish {
+        width: 60vw;
+    }
+    .head-wish {
+        width: 60vw;
+    }
+    .books-wish {
+        width: 60vw;
+    }
+    .details-wish {
+        width: 170px;
+    }
+    .wish-image {
+        width: 45px;
+        height: 55px;
+    }
+    .bookname-wish {
+        font-size: small;
+    } 
+    .author-wish {
+        font-size: x-small;
+    }
+    .price-wish {
+        font-size: x-small;
+    }
+    .remove-wish {
+        width: 10px;
+        height: 12px;
+        
+        left: 30px;
+        bottom: 10px;
+        
+    }
+}

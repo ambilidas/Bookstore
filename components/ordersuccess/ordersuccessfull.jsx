@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import Footer from '../footer/footer'
 import Header from '../header/header'
 
-function Ordersuccessfull(props) {
+function Ordersuccessfull() {
 
 
   return (

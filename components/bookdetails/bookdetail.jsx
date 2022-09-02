@@ -115,7 +115,7 @@ const wishList = (data) => {
             Lorem ipsum dolor sit amet, consetetur sadipscing 
             </p>
           </div>
-          <div><h3 className='customer-feedback'>Customer Feedback</h3></div>
+          <h3 className='customer-feedback'>Customer Feedback</h3>
           <div className='overall-rating-box'>
             <p className='text-overallrating'>Overall rating</p>
             <div className='staricon-div'>

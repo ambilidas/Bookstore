@@ -1,7 +1,8 @@
 .main-container-mycart {
     
-    min-height: 150vh;
-    max-height: 300vh;
+    /* min-height: 150vh;
+    max-height: 350vh; */
+    height: 250vh;
     margin-top: 20px;
     /* display: flex;
     flex-direction: column; */
@@ -13,9 +14,9 @@
 }
 .mycart {
     width: 774px;
-    min-height: 251px;
-    max-height: 1000px !important; 
-    /* height: 251px; */
+    /* min-height: 251px;
+    max-height: 1000px !important;  */
+    height: 70vh;
     margin: auto;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #DCDCDC;
@@ -91,7 +92,7 @@
     opacity: 1;
     color: #FFFFFF;
     align-self: flex-end;
-    margin-top: 50px;
+    margin-top: 250px;
     margin-right: 20px;
 }
 .rect-addr-details {
@@ -120,8 +121,9 @@
 }
 .maindiv-ordersum {
     width: 774px;
-    min-height: 237px;
-    max-height: 1000px;
+    /* min-height: 237px;
+    max-height: 1000px; */
+    height: 70vh;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #DCDCDC;
     border-radius: 1px;
@@ -150,6 +152,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 20px;
+    margin-bottom: 120px;
     gap: 20px;
 }
 .btn-checkout {
@@ -162,4 +165,63 @@
     align-self: flex-end;
     margin-right: 40px;
 }
-
+@media screen and (min-width: 481px) and (max-width: 860px) {
+    .mycart {
+        width: 70vw;
+        height: 50vh;
+    }
+    .rect-addr-details {
+        width: 70vw;
+    }
+    .location {
+        width: 260px;
+        margin-left: 30px;
+    }
+    .maindiv-ordersum {
+        width: 70vw;
+        height: 50vh;
+    }
+}
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .mycart {
+        width: 65vw;
+        height: 80vh;
+    }
+    .rect-addr-details {
+        width: 65vw;
+    }
+    .location {
+        width: 120px;
+        height: 30px;
+        margin-left: 30px;
+        gap: 5px;
+    }
+    .heading-mycart {
+        font-size: 13px;
+    }
+    .location-icon {
+        width: 15px;
+        height: 20px;
+    }
+    .location-text {
+        font-size: xx-small;
+    }
+    .sub-div2-mycart {
+        margin-top: 30px;
+    }
+    .btn-placeorder {
+        width: 100px;
+        height: 30px;
+        margin-top: 330px;
+    }
+    .maindiv-ordersum {
+        width: 70vw;
+        height: 80vh;
+    }
+    .btn-checkout {
+        width: 100px;
+        height: 30px;
+        margin-top: 60px;
+    }
+    
+}
