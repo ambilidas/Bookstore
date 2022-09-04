@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import './home.css'
-
+import bookimage from './education.png'
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 import {getBooks} from '../../services/dataservice'
 import Book from '../../components/books/book';
@@ -18,6 +21,7 @@ function Home() {
     const [switchBookDetails,setSwitchBookDetails] = useState(false);
     // const [switchToHome,setSwitchToHome] = useState(false);
     const [page,setPage] = useState(1);
+    const [search,setSearch] = useState('');
 
     const GetBooks = () => {
         getBooks().then((response) => {
@@ -40,6 +44,10 @@ function Home() {
         
         setPage(v)
     }
+    const listenTosearchbar = (e) => {
+        setSearch(e.target.value)
+        
+    }
 
     // const listenToContinueshopping = () => {
     //     setSwitchToHome(true)
@@ -51,7 +59,26 @@ function Home() {
   return (
     <div className='main-container-home'>
         
-       <Header />
+        <div className='header-home'>
+            <div className='sub-box1-home'>
+                <img className='image-book-header' src={bookimage} />
+                <p className='bookstore-text'>Bookstore</p>
+                <div className='white-box'>
+                    <SearchOutlinedIcon className='search-icon' />
+                    <input type='text' className='textbox-search' placeholder='Search...' value={search} onChange={listenTosearchbar} />
+                </div>
+            </div>
+            <div className='sub-box2-home'>
+                <div className='sub-div3-home'>
+                    <PersonOutlineIcon className='profile-icon'/>
+                    <label className='profile-icon'>Profile</label>
+                </div>
+                <div className='sub-div3-home'>
+                    <ShoppingCartOutlinedIcon className='profile-icon'/>
+                    <label className='cart-icon'>Cart</label>
+                </div>
+            </div>
+        </div>  
         <div className='books-div'>
             <h3>Books</h3>
             <select>
@@ -64,8 +91,17 @@ function Home() {
        
          <div className='middle-container'>
             {
-                switchBookDetails ? <Bookdetail booklist={booklist}/> : booksArray.map((book) => <Book book={book} listenToBookDetails={listenToBookDetails} listenToBookList={listenToBookList}/>)
-            }
+                switchBookDetails ? <Bookdetail booklist={booklist}/> :
+                page === 1 ?
+                 booksArray.slice(0,8).filter(book => book.bookName.toLowerCase().includes(search)).map((book) => <Book book={book} listenToBookDetails={listenToBookDetails} listenToBookList={listenToBookList}/>)
+                 : page === 2 ?
+                 booksArray.slice(8,16).map((book) => <Book book={book} listenToBookDetails={listenToBookDetails} listenToBookList={listenToBookList}/>)
+                 : page === 3 ?
+                 booksArray.slice(16,24).map((book) => <Book book={book} listenToBookDetails={listenToBookDetails} listenToBookList={listenToBookList}/>)
+                 : page === 4 ?
+                 booksArray.slice(24,30).map(book => <Book book={book} listenToBookDetails={listenToBookDetails} listenToBookList={listenToBookList}/>) 
+                 : null
+            }  
         </div>
 
                
