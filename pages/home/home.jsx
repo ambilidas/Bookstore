@@ -43,6 +43,7 @@ function Home() {
     const listentopage =(e,v) => {
         
         setPage(v)
+        console.log(v);
     }
     const listenTosearchbar = (e) => {
         setSearch(e.target.value)
