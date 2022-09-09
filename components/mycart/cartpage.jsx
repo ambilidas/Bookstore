@@ -6,16 +6,22 @@ import {getCartItems} from '../../services/dataservice';
 import Getcartdata from '../getcartdata/getcartdata';
 import Addressdetails from '../addressDetails/addressdetails';
 import {checkoutItem} from '../../services/dataservice';
+import {useDispatch} from 'react-redux';
+import {getCartApiDetails, getModules} from '../redux/actions/module';
+import { useSelector } from 'react-redux';
+import {connect} from 'react-redux';
 
 function Cartpage() {
     const [cartItems,setCartitems] = useState([]);
     const [placeorder,setPlaceorder] = useState(false);
     const [orderSummary,setOrderSummary] = useState(false);
+    const dispatch = useDispatch();
 
     const GetCartItems = () => {
 
         getCartItems().then((response) => {
           console.log(response);
+          dispatch(getCartApiDetails(response.data.result));
           setCartitems(response.data.result)
           
         }).catch((error) => {
@@ -23,7 +29,10 @@ function Cartpage() {
         })
     }
 
-    
+    const batchData = useSelector((state) => state.GetCartApiDetails);
+    const cartdetailsRedux = batchData.batchDetails
+    console.log('cartdetailsRedux',cartdetailsRedux);
+
     const listenToPlaceorder = () => {
         setPlaceorder(true)
     }
@@ -72,7 +81,7 @@ function Cartpage() {
             <div className='sub-div2-mycart'>
             
                 {
-                    cartItems.filter((book) => book.product_id !== null).map((items) => <Getcartdata items={items} />)
+                   cartdetailsRedux && cartdetailsRedux.filter((book) => book.product_id !== null).map((items) => <Getcartdata items={items} />)
                 }
             </div>
                 {
@@ -113,4 +122,4 @@ function Cartpage() {
   )
 }
 
-export default Cartpage
+export default connect() (Cartpage)
