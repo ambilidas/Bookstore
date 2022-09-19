@@ -14,6 +14,7 @@ import Footer from '../../components/footer/footer';
 import Ordersuccessfull from '../../components/ordersuccess/ordersuccessfull';
 import Header from '../../components/header/header';
 import Pagination from '@mui/material/Pagination';
+import {useNavigate} from 'react-router-dom';
 
 function Home() {
     const [booksArray,setBooksArray] = useState([]);
@@ -22,7 +23,7 @@ function Home() {
     // const [switchToHome,setSwitchToHome] = useState(false);
     const [page,setPage] = useState(1);
     const [search,setSearch] = useState('');
-
+    const navigate = useNavigate()
     const GetBooks = () => {
         getBooks().then((response) => {
             console.log(response)
@@ -33,6 +34,7 @@ function Home() {
    
        })
     }
+   
     const listenToBookDetails = (data) => {
         
         setSwitchBookDetails(true)
@@ -48,6 +50,9 @@ function Home() {
     const listenTosearchbar = (e) => {
         setSearch(e.target.value)
         
+    }
+    const gotoCart = () => {
+        navigate('/Mycart');
     }
 
     // const listenToContinueshopping = () => {
@@ -76,12 +81,12 @@ function Home() {
                 </div>
                 <div className='sub-div3-home'>
                     <ShoppingCartOutlinedIcon className='profile-icon'/>
-                    <label className='cart-icon'>Cart</label>
+                    <label className='cart-icon' onClick={gotoCart}>Cart</label>
                 </div>
             </div>
         </div>  
         <div className='books-div'>
-            <h3>Books</h3>
+            <h3>Books({booksArray.length})</h3>
             <select>
                 <option>Sort by relevence</option>
                 <option>price:high to low</option>
