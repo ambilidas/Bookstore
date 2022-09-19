@@ -33,7 +33,7 @@ function Wishlist() {
   return (
     <div className='maindiv-wish'>
         <div className='head-wish'>
-            <h3 className='mywish'>My Wishlist</h3>
+            <h3 className='mywish'>My Wishlist({wishlistitems.length})</h3>
         </div>
         {
                     wishlistitems.filter((book) => book.product_id !== null).map((wishlist) =>

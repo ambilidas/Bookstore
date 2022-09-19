@@ -71,7 +71,7 @@ function Cartpage() {
     <div className='main-container-mycart'> 
         <div className='mycart'>
             <div className='sub-div1-mycart'>
-                <h3 className='heading-mycart'>My cart</h3>
+                <h3 className='heading-mycart'>My cart({cartItems.length})</h3>
                 <div className='location'>
                     <LocationOnIcon className='location-icon'/>
                     <p className='location-text'>Use current location</p>
