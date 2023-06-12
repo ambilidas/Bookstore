@@ -2,13 +2,16 @@ import React from 'react'
 import './signup.css'
 import TextField from '@mui/material/TextField';
 import { SignUp } from '../../services/userservice';
+import { useNavigate } from 'react-router-dom';
 
 const fullNameRegex = /[A-Z]{1}[a-z]{2,}/;
 const emailRegex = /^[a-zA-Z]+[a-zA-Z0-9]*[- . + _]?[a-zA-Z0-9]+[@]{1}[a-z0-9]+[.]{1}[a-z]+[.]?[a-z]+$/
 const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$/;
 // const phoneNumberRegex = /^[0-9]{2}[0-9]{10}/;
 
+
 function Signup() {
+  const navigate = useNavigate();
   const [regexObj, setRegexObj] = React.useState({
     fullNameBorder: false,
     fullNameHelper: "",
@@ -105,7 +108,7 @@ const submit = () => {
 
   if(fullnameTest === true && emailTest === true && passwordTest === true ) {
     SignUp(signupObj)
-          .then((resp) => { console.log(resp); localStorage.setItem('token', resp.data.id) })
+          .then((resp) => { console.log(resp); navigate('/Home'); localStorage.setItem('token', resp.data.id) })
           .catch((error) => { console.log(error) })
   }
 }

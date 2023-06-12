@@ -3,10 +3,15 @@ import img1 from './bookimg.png'
 import './book.css'
 
 function Book(props) {
+  const showBookdetails = (data) => {
+    console.log(data)
+    props.listenToBookList(data)
+    props.listenToBookDetails(true)
+  }
 
   return (
     <div className='book-list'>
-      <div className='sub-div1-booklist'>
+      <div className='sub-div1-booklist' onClick={() => showBookdetails(props.book)}>
         <img src={img1} className='image-book'/>
       </div>
       <div className='sub-div2-booklist'>

@@ -18,6 +18,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    border-radius: 2px 2px 0px 0px;
+    opacity: 1;
 }
 .image-book {
     width: 105px;

@@ -108,3 +108,30 @@
     border-radius: 3px;
     opacity: 1;
 }
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .emailtextfield-login {
+        width: 126px;
+        height: 15px;
+    }
+    .passwordtextfield-login {
+        width: 126px;
+        height: 15px;
+        position: relative;
+        top: 10px;
+    }
+    .login-btn {
+        width: 126px;
+        height: 30px;
+        margin-top: 20px;
+    }
+    .emailid-login {
+        display: none;
+    }
+    .password-login {
+        display: none;
+    }
+    .forgot-password {
+        display: none;
+    }
+    
+}
